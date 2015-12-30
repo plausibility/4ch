@@ -42,6 +42,11 @@ class Reply(object):
         return self._json.get("no", 0)
 
     @property
+    def name(self):
+        """The author of the reply"""
+        return self._json.get("name", "")
+
+    @property
     def reply_to(self):
         """What post ID is this a reply to"""
         return self._json.get("resto", 0)
@@ -147,7 +152,7 @@ class Reply(object):
         """The URL of the post on the parent thread"""
         return "{0}{1}/{2}/thread/{3}#p{4}".format(
             self._thread._board.proto,
-            self._thread._board._urls["boards"],
+            fourch.urls["boards"],
             self._thread._board.name,
             self._thread.res,
             self.number
